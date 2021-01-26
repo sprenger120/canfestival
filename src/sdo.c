@@ -34,8 +34,8 @@
 
 #include <stdlib.h>
 
-#include "sysdep.h"
-#include "canfestival.h"
+#include "canfestival/sysdep.h"
+#include "canfestival/canfestival.h"
 
 /* Uncomment if your compiler does not support inline functions */
 #define NO_INLINE
@@ -753,7 +753,7 @@ UNS8 proceedSDO (CO_Data* d, Message *m)
 	UNS8 line = 0;
 	UNS32 nbBytes; 		/* received or to be transmited. */
 	UNS8 nodeId = 0;  	/* The node Id of the server if client otherwise unused */
-	UNS8 CliServNbr;
+	UNS8 CliServNbr = 0;
 	UNS8 whoami = SDO_UNKNOWN;  /* SDO_SERVER or SDO_CLIENT.*/
 	UNS32 errorCode; /* while reading or writing in the local object dictionary.*/
 	UNS8 data[8];    /* data for SDO to transmit */
