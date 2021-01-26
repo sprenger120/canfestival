@@ -1,7 +1,7 @@
 #ifndef __sysdep_h__
 #define __sysdep_h__
 
-#include "config.h"
+#include <canfestival/config.h>
 
 #ifdef CANOPEN_BIG_ENDIAN
 

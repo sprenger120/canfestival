@@ -27,8 +27,8 @@ struct struct_s_BOARD;
 
 typedef struct struct_s_BOARD s_BOARD;
 
-#include "applicfg.h"
-#include "can.h"
+#include "canfestival/applicfg.h"
+#include "canfestival/can.h"
 
 /**
  * @brief The CAN board configuration
@@ -70,7 +70,7 @@ int DLL_CALL(canClose)(CAN_HANDLE)FCT_PTR_INIT;
 UNS8 DLL_CALL(canChangeBaudRate)(CAN_HANDLE, char *)FCT_PTR_INIT;
 
 #if defined DEBUG_MSG_CONSOLE_ON || defined NEED_PRINT_MESSAGE
-#include "def.h"
+#include "canfestival/def.h"
 
 #define _P(fc) case fc: MSG(#fc" ");break;
 

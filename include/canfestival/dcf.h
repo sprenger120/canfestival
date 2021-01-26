@@ -19,35 +19,13 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
+#include "canfestival/data.h"
 
-/** @defgroup nmtslave NMT Slave
- *  @brief The NMT Slave methods are called automatically when a NMT message from Master are received. 
- *  @ingroup networkmanagement
- */
- 
-#ifndef __nmtSlave_h__
-#define __nmtSlave_h__
+#define DCF_STATUS_INIT         0
+#define DCF_STATUS_READ_CHECK   1
+#define DCF_STATUS_WRITE        2
+#define DCF_STATUS_SAVED        3
+#define DCF_STATUS_VERIF_OK     4
 
-#include <applicfg.h>
-#include "data.h"
-
-/** 
- * @brief Threat the reception of a NMT message from the master.
- * @param *d Pointer to the CAN data structure
- * @param *m Pointer to the message received
- * @return 
- *  -  0 if OK 
- *  - -1 if the slave is not allowed, by its state, to receive the message
- */
-void proceedNMTstateChange (CO_Data* d, Message * m);
-
-/** 
- * @brief Transmit the boot-Up frame when the slave is moving from initialization
- * state to pre_operational state.
- * @param *d Pointer on the CAN data structure
- * @return canSend(bus_id,&m)
- */
-UNS8 slaveSendBootUp (CO_Data* d);
-
-
-#endif /* __nmtSlave_h__ */
+UNS8 init_consise_dcf(CO_Data* d, UNS8 nodeId);
+UNS8 check_and_start_node(CO_Data* d, UNS8 nodeId);

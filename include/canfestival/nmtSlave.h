@@ -20,24 +20,34 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#ifndef __can_h__
-#define __can_h__
+/** @defgroup nmtslave NMT Slave
+ *  @brief The NMT Slave methods are called automatically when a NMT message from Master are received. 
+ *  @ingroup networkmanagement
+ */
+ 
+#ifndef __nmtSlave_h__
+#define __nmtSlave_h__
 
-#include "applicfg.h"
+#include <canfestival/applicfg.h>
+#include "canfestival/data.h"
 
 /** 
- * @brief The CAN message structure 
- * @ingroup can
+ * @brief Threat the reception of a NMT message from the master.
+ * @param *d Pointer to the CAN data structure
+ * @param *m Pointer to the message received
+ * @return 
+ *  -  0 if OK 
+ *  - -1 if the slave is not allowed, by its state, to receive the message
  */
-typedef struct {
-  UNS16 cob_id;	/**< message's ID */
-  UNS8 rtr;		/**< remote transmission request. (0 if not rtr message, 1 if rtr message) */
-  UNS8 len;		/**< message's length (0 to 8) */
-  UNS8 data[8]; /**< message's datas */
-} Message;
+void proceedNMTstateChange (CO_Data* d, Message * m);
 
-#define Message_Initializer {0,0,0,{0,0,0,0,0,0,0,0}}
+/** 
+ * @brief Transmit the boot-Up frame when the slave is moving from initialization
+ * state to pre_operational state.
+ * @param *d Pointer on the CAN data structure
+ * @return canSend(bus_id,&m)
+ */
+UNS8 slaveSendBootUp (CO_Data* d);
 
-typedef UNS8 (*canSend_t)(Message *);
 
-#endif /* __can_h__ */
+#endif /* __nmtSlave_h__ */

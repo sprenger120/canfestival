@@ -19,13 +19,25 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-#include "data.h"
 
-#define DCF_STATUS_INIT         0
-#define DCF_STATUS_READ_CHECK   1
-#define DCF_STATUS_WRITE        2
-#define DCF_STATUS_SAVED        3
-#define DCF_STATUS_VERIF_OK     4
+#ifndef __can_h__
+#define __can_h__
 
-UNS8 init_consise_dcf(CO_Data* d, UNS8 nodeId);
-UNS8 check_and_start_node(CO_Data* d, UNS8 nodeId);
+#include "canfestival/applicfg.h"
+
+/** 
+ * @brief The CAN message structure 
+ * @ingroup can
+ */
+typedef struct {
+  UNS16 cob_id;	/**< message's ID */
+  UNS8 rtr;		/**< remote transmission request. (0 if not rtr message, 1 if rtr message) */
+  UNS8 len;		/**< message's length (0 to 8) */
+  UNS8 data[8]; /**< message's datas */
+} Message;
+
+#define Message_Initializer {0,0,0,{0,0,0,0,0,0,0,0}}
+
+typedef UNS8 (*canSend_t)(Message *);
+
+#endif /* __can_h__ */

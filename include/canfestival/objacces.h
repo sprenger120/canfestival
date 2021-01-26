@@ -39,7 +39,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __objacces_h__
 #define __objacces_h__
 
-#include <applicfg.h>
+#include <canfestival/applicfg.h>
 
 
 #ifdef __cplusplus
