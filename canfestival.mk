@@ -1,4 +1,4 @@
-CANFESTIVAL_PATH        := canopen_stack_canfestival
+CANFESTIVAL_PATH        := canfestival
 
 CANFESTIVAL_SRC         := $(CANFESTIVAL_PATH)/src/dcf.c \
                            $(CANFESTIVAL_PATH)/src/emcy.c \
