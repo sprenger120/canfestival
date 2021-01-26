@@ -1,8 +1,8 @@
 #include "timerFixture.h"
 
 extern "C" {
-	#include "timer.h"
-	#include "applicfg.h"
+	#include "canfestival/timer.h"
+	#include "canfestival/applicfg.h"
 
 	extern s_timer_entry timers[MAX_NB_TIMER];
 	extern TIMEVAL total_sleep_time;

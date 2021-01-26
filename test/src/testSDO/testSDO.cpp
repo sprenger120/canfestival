@@ -3,10 +3,10 @@
 #include <hippomocks.h>
 
 extern "C" {
-#include "canfestival.h"
-#include "applicfg.h"
-#include "timer.h"
-#include "sdo.h"
+#include "canfestival/canfestival.h"
+#include "canfestival/applicfg.h"
+#include "canfestival/timer.h"
+#include "canfestival/sdo.h"
 #include "testNodeSlave.h"
 }
 #include "testCommon.h"

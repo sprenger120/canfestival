@@ -2,7 +2,7 @@
 extern "C" {
 #endif
 
-#include "data.h"
+#include "canfestival/data.h"
 
 int CmpMessage(const Message a, const Message b);
 

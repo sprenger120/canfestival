@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 extern "C" {
-#include "applicfg.h"
-#include "timer.h"
+#include "canfestival/applicfg.h"
+#include "canfestival/timer.h"
 }
 
 class TimerFixture : public ::testing::Test {
