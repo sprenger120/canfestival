@@ -29,8 +29,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 */
 
-#include "data.h"
-#include "sysdep.h"
+#include "canfestival/data.h"
+#include "canfestival/sysdep.h"
 
 /** Prototypes for internals functions */
 /*!                                                                                                
@@ -174,7 +174,7 @@ UNS8 setState(CO_Data* d, e_nodeState newState)
 			/* Transition from Initialisation to Pre_operational */
 			/* is automatic as defined in DS301. */
 			/* App don't have to call SetState(d, Pre_operational) */
-								
+			/* fall through */					
 			case Pre_operational:
 			{
 				

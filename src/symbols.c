@@ -1,9 +1,9 @@
 #include <linux/module.h>
-#include "data.h"
-#include "can_driver.h"
-#include "dcf.h"
-#include "nmtSlave.h"
-#include "timers_driver.h"
+#include "canfestival/data.h"
+#include "canfestival/can_driver.h"
+#include "canfestival/dcf.h"
+#include "canfestival/nmtSlave.h"
+#include "canfestival/timers_driver.h"
 
 // CanFestival symbols available to other kernel modules
 
