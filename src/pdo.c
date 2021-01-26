@@ -21,10 +21,10 @@
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
   USA
 */
-#include "pdo.h"
-#include "objacces.h"
-#include "canfestival.h"
-#include "sysdep.h"
+#include "canfestival/pdo.h"
+#include "canfestival/objacces.h"
+#include "canfestival/canfestival.h"
+#include "canfestival/sysdep.h"
 
 /*!
 ** @file   pdo.c
@@ -294,7 +294,8 @@ proceedPDO (CO_Data * d, Message * m)
                   }             /* end loop while on mapped variables */
                 if (d->RxPDO_EventTimers)
                 {
-                    TIMEVAL EventTimerDuration = *(UNS16 *)d->objdict[offsetObjdict].pSubindex[5].pObject;
+                    offsetObjdict = d->firstIndex->PDO_RCV;
+                    TIMEVAL EventTimerDuration = *(UNS16 *)d->objdict[offsetObjdict + numPdo].pSubindex[5].pObject;
                     if(EventTimerDuration){
                         DelAlarm (d->RxPDO_EventTimers[numPdo]);
                         d->RxPDO_EventTimers[numPdo] = SetAlarm (d, numPdo, d->RxPDO_EventTimers_Handler,
@@ -536,10 +537,10 @@ sendOnePDOevent (CO_Data * d, UNS8 pdoNum)
     }
 
   /*Compare new and old PDO */
-  if (d->PDO_status[pdoNum].last_message.cob_id == pdo.cob_id
+  if (/*d->PDO_status[pdoNum].last_message.cob_id == pdo.cob_id
       && d->PDO_status[pdoNum].last_message.len == pdo.len
       && memcmp(d->PDO_status[pdoNum].last_message.data,
-					pdo.data, 8) == 0
+					pdo.data, 8) == 0*/ 0
     )
     {
       /* No changes -> go to next pdo */
